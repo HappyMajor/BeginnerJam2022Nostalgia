@@ -24,13 +24,12 @@ public class Draggable : MonoBehaviour
 
     void OnMouseDrag()
     {
-        Vector3 screenMousePosition = Input.mousePosition;
+       
+        Vector3 screenMousePosition = Input.mousePosition + new Vector3(0,0,7.5f);
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(screenMousePosition);
         dragTargetPosition = worldMousePosition;
 
         TweenFactory.Tween("drag", dragTargetTransform.position, dragTargetPosition, 0.15f, TweenScaleFunctions.Linear, OnDragTweenUpdate, OnDragTweenFinished);
-
-
 
         if (!isDragged) {
             isDragged = true;
@@ -89,12 +88,12 @@ public class Draggable : MonoBehaviour
 
     void OnDragTweenFinished(ITween<Vector3> progress)
     {
-        dragTargetTransform.position = new Vector3(progress.CurrentValue.x, progress.CurrentValue.y, 0f);
+        dragTargetTransform.position = new Vector3(progress.CurrentValue.x, progress.CurrentValue.y, -2.5f);
         isDragged = false;
     }
 
     void OnDragTweenUpdate(ITween<Vector3> progress)
     {
-        dragTargetTransform.position = new Vector3(progress.CurrentValue.x, progress.CurrentValue.y, 0f);
+        dragTargetTransform.position = new Vector3(progress.CurrentValue.x, progress.CurrentValue.y, -2.5f);
     }
 }

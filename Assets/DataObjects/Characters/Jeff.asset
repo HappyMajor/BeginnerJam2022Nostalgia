@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Jeff
   hints:
-  - text: Im the first hint after 3 seconds...
-    afterTime: 3
-  - text: Im the second hint after 8 seconds...
-    afterTime: 8
+  - text: I Like lemons...
+    afterTime: 5
+  - text: I Like peach...
+    afterTime: 10
   preferences:
   - ingredient: {fileID: 11400000, guid: 9a697531559c62f4bb727f9a3ee0554c, type: 2}
-    points: 0
+    points: 10
+  - ingredient: {fileID: 11400000, guid: c74a2277a45924f458def088549c5c8a, type: 2}
+    points: 10

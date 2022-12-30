@@ -25,9 +25,11 @@ public class IngredientController : MonoBehaviour
 
     public void PourIntoCocktail(CocktailController cocktail)
     {
-        cocktail.AddIngredient(this);
-        Debug.Log("Ingredient: Pour Into Cocktail");
-        Destroy(gameObject);
+        if(ingredientSO.type == IngredientSO.IngredientType.BASE)
+        {
+            cocktail.AddBase(this,33);
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnMouseDown()
