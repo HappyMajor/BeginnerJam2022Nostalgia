@@ -9,8 +9,10 @@ public class IngredientSO : ScriptableObject
     public IngredientType type;
     public Sprite sprite;
 
+    public Color baseColor;
+
     public enum IngredientType
     {
-        BASE
+        BASE, SPICE
     }
 }

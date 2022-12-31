@@ -168,7 +168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75e553e547238b24c9b31f0118514764, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55323b69681d54a2ebd1251b3a75296b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -213,8 +213,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000100016594, y: -0.07}
-  m_SizeDelta: {x: -0.8338, y: -0.2839}
+  m_AnchoredPosition: {x: 0.000000029802322, y: 0.000002503395}
+  m_SizeDelta: {x: 0, y: -0.0000048876}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3633790294380059930
 CanvasRenderer:
@@ -237,19 +237,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3663218, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.6938925, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b1b72d9adc7d8491a8af03dffcb92f8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8aaead15ac8004d3da7cf358706e1703, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
