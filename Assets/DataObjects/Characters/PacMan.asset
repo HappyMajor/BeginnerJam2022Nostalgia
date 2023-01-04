@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c760774d9f1e4f4d9471eba9241aedd, type: 3}
+  m_Name: PacMan
+  m_EditorClassIdentifier: 
+  characterName: PacMan
+  idle: {fileID: 21300000, guid: a03445bb378155048984f8b469cf59bc, type: 3}
+  win: {fileID: 21300000, guid: 7205302d99985ec48b85d4559d7bd631, type: 3}
+  hints:
+  - text: waka waka waka waka waka waka
+    onEvent:
+      eventType: 1
+      arguments:
+      - 2
+      maxAmount: 1
+  - text: waka waka waka waka waka waka..
+    onEvent:
+      eventType: 1
+      arguments:
+      - 6
+      maxAmount: 1
+  - text: waka waka waka waka waka waka..
+    onEvent:
+      eventType: 1
+      arguments:
+      - 12
+      maxAmount: 1
+  - text: I love fruits!!
+    onEvent:
+      eventType: 3
+      arguments:
+      - multivitamin
+      maxAmount: 1
+  - text: Isnt there something more fuity available??
+    onEvent:
+      eventType: 3
+      arguments:
+      - vodka
+      maxAmount: 1
+  - text: Does this even have vitamins?
+    onEvent:
+      eventType: 3
+      arguments:
+      - mars_bar
+      maxAmount: 1
+  - text: Can I eat that?
+    onEvent:
+      eventType: 3
+      arguments:
+      - doom_sword
+      maxAmount: 1
+  - text: Can I eat that?
+    onEvent:
+      eventType: 3
+      arguments:
+      - crystal
+      maxAmount: 1
+  - text: Can I eat that?
+    onEvent:
+      eventType: 3
+      arguments:
+      - italy_flag
+      maxAmount: 1
+  - text: At least.... it is made of.. fruits, .. I guess..?
+    onEvent:
+      eventType: 3
+      arguments:
+      - red_wine
+      maxAmount: 1
+  - text: Eww, this looks bad. I WANT IT FRUITY!!!
+    onEvent:
+      eventType: 3
+      arguments:
+      - milk
+      maxAmount: 1
+  - text: I dont take drugs, sry
+    onEvent:
+      eventType: 3
+      arguments:
+      - mashroom
+      maxAmount: 1
+  preferences:
+  - ingredient: {fileID: 11400000, guid: 9b5280e65e8626241b536a267af0ac28, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: 8a42b3b6f1a73444e95fdbd11f4aabf2, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: 02561a64d35f85249a494771ef11ae0b, type: 2}
+    points: 10

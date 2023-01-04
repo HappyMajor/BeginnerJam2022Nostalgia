@@ -19,28 +19,39 @@ public class PathController : MonoBehaviour
     public float roationAngle = 30f;
     public bool funnyMovement;
     public bool isMovingFunny = false;
+    public bool smooth;
 
     public void MoveTransformAlongPath(Transform moveTransform, Action finished)
     {
+        TweenFactory.RemoveTweenKey("rotateLeft" + gameObject.name, TweenStopBehavior.Complete);
+        TweenFactory.RemoveTweenKey("smoothMovement" + gameObject.name, TweenStopBehavior.Complete);
         moveTransform.position = points[0].position;
-        move = true;
         currentTransform = moveTransform;
+        move = true;
         this.finished = finished;
         currentPointIndex = 1;
+        currentlyTweening = false;
     }
 
     private void Update()
     {
         if(move && currentTransform != null)
         {
-            if(currentPointIndex < points.Count)
-            {
+            if (currentPointIndex < points.Count)
+              {
                 if (!currentlyTweening)
                 {
-                    Debug.Log(" Start tween!");
+                    Func<float, float> scale;
+
+                    if(smooth)
+                    {
+                        scale = TweenScaleFunctions.QuadraticEaseOut;
+                    } else
+                    {
+                        scale = TweenScaleFunctions.Linear;
+                    }
                     currentlyTweening = true;
-                    TweenFactory.Tween("smoothMovement", currentTransform.position, points[currentPointIndex].position, speed, TweenScaleFunctions.CubicEaseInOut, (t) => currentTransform.position = t.CurrentValue, (t) => {
-                        Debug.Log("Moved to " + currentPointIndex);
+                    TweenFactory.Tween("smoothMovement" + gameObject.name, currentTransform.position, points[currentPointIndex].position, speed, scale, (t) => currentTransform.position = t.CurrentValue, (t) => {
                         currentlyTweening = false;
                         currentPointIndex++;
                     });
@@ -49,19 +60,17 @@ public class PathController : MonoBehaviour
             {
                 move = false;
                 currentPointIndex = 0;
-                finished();
                 currentTransform = null;
-                TweenFactory.RemoveTweenKey("rotateLeft", TweenStopBehavior.DoNotModify);
-                TweenFactory.RemoveTweenKey("smoothMovement", TweenStopBehavior.DoNotModify);
+                TweenFactory.RemoveTweenKey("rotateLeft" + gameObject.name, TweenStopBehavior.DoNotModify);
+                TweenFactory.RemoveTweenKey("smoothMovement" + gameObject.name, TweenStopBehavior.Complete);
+                finished();
             }
         }
 
         if(move && funnyMovement && !isMovingFunny && currentTransform != null)
         {
             isMovingFunny = true;
-            TweenFactory.Tween("rotateLeft", currentTransform.rotation, Quaternion.Euler(new Vector3(0, 0, roationAngle)), rotationDuration, TweenScaleFunctions.QuadraticEaseInOut, (t) => currentTransform.rotation = t.CurrentValue, (t) =>
-            {
-            }).ContinueWith(new QuaternionTween().Setup(Quaternion.Euler(new Vector3(0, 0, roationAngle)), Quaternion.Euler(new Vector3(0, 0, -roationAngle)), rotationDuration, TweenScaleFunctions.QuadraticEaseIn, (t) => currentTransform.rotation = t.CurrentValue, (t) => { isMovingFunny = false; }));
+            TweenFactory.Tween("rotateLeft" + gameObject.name, currentTransform.rotation, Quaternion.Euler(new Vector3(0, 0, roationAngle)), rotationDuration, TweenScaleFunctions.QuadraticEaseInOut, (t) => currentTransform.rotation = t.CurrentValue, null).ContinueWith(new QuaternionTween().Setup(Quaternion.Euler(new Vector3(0, 0, roationAngle)), Quaternion.Euler(new Vector3(0, 0, -roationAngle)), rotationDuration, TweenScaleFunctions.QuadraticEaseIn, (t) => currentTransform.rotation = t.CurrentValue, (t) => { isMovingFunny = false; }));
         }
     }
 }

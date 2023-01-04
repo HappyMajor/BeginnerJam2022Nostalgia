@@ -14,11 +14,21 @@ public class IngredientController : MonoBehaviour
     private Coroutine pourRoutine;
     public ParticleSystem pourEffect;
 
+    public HelpIndicator helpIndicator;
+
+    public AudioClip splash;
+    public AudioClip pour;
+    public AudioClip click;
+    public AudioSource audioSource;
+
     private Vector3 startPosition;
 
     public void Select()
     {
+        helpIndicator.StopShowingHelpIndicator();
         this.selected = true;
+        audioSource.PlayOneShot(click);
+        GameEventController.GetInstance().onGrabEvent?.Invoke(new GameEventController.IngredientEvent(this));
     }
 
     public void DeSelect()
@@ -42,15 +52,20 @@ public class IngredientController : MonoBehaviour
 
     public void JumpBackToSlot()
     {
-
+        TweenFactory.Tween("jumpBack", transform.position, startPosition, 0.5f, TweenScaleFunctions.QuadraticEaseOut, (t) => transform.position = t.CurrentValue, null);
     }
 
     public void PourIntoCocktail(CocktailController cocktail)
     {
         if(ingredientSO.type == IngredientSO.IngredientType.SPICE)
         {
-            cocktail.AddBase(this,33);
-            gameObject.SetActive(false);
+            if(!cocktail.isFull())
+            {
+                cocktail.AddBase(this, 15);
+                audioSource.PlayOneShot(splash);
+                JumpBackToSlot();
+                GameEventController.GetInstance().onPourEvent?.Invoke(new GameEventController.IngredientEvent(this));
+            }
         }
     }
 
@@ -58,12 +73,18 @@ public class IngredientController : MonoBehaviour
     {
         if(pourRoutine == null)
         {
-            TweenFactory.RemoveTweenKey("rotateNormal", TweenStopBehavior.Complete);
-            RotateBottleLeft();
-            pourRoutine = StartCoroutine(PourBase(cocktail));
-            ParticleSystem.MainModule main = pourEffect.main;
-            main.startColor = ingredientSO.baseColor;
-            pourEffect.Play();
+            if(!cocktail.isFull())
+            {
+                TweenFactory.RemoveTweenKey("rotateNormal", TweenStopBehavior.Complete);
+                RotateBottleLeft();
+                pourRoutine = StartCoroutine(PourBase(cocktail));
+                ParticleSystem.MainModule main = pourEffect.main;
+                main.startColor = ingredientSO.baseColor;
+                pourEffect.Play();
+                audioSource.clip = pour;
+                audioSource.Play();
+                GameEventController.GetInstance().onPourEvent?.Invoke(new GameEventController.IngredientEvent(this));
+            }
         }
     }
 
@@ -81,6 +102,8 @@ public class IngredientController : MonoBehaviour
         TweenFactory.RemoveTweenKey("rotateLeft", TweenStopBehavior.Complete);
         RotateBottleNormal();
         pourEffect.Stop();
+        audioSource.Stop();
+        audioSource.clip = null;
         if (pourRoutine != null)
         {
             StopCoroutine(pourRoutine);
@@ -161,5 +184,7 @@ public class IngredientController : MonoBehaviour
     {
         SetSprite(ingredientSO.sprite);
         startPosition = transform.position;
+
+        helpIndicator = GameObject.Find("HelpIndicator").GetComponent<HelpIndicator>();
     }
 }

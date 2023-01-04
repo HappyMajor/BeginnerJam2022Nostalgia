@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c2f5b9d45c3b84bae04e5d1673ded9, type: 3}
   m_Name: Doom_Sword
   m_EditorClassIdentifier: 
-  ingredientName: Doom_Sword
+  ingredientName: doom_sword
   type: 1
   sprite: {fileID: 21300000, guid: 92523c7077f454379985d66c8ce017c4, type: 3}
+  baseColor: {r: 0, g: 0, b: 0, a: 0}

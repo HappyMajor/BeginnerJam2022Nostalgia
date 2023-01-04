@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c760774d9f1e4f4d9471eba9241aedd, type: 3}
+  m_Name: Crash
+  m_EditorClassIdentifier: 
+  characterName: Crash
+  idle: {fileID: 21300000, guid: 27242f50f3564064f9604b86de9c6dee, type: 3}
+  win: {fileID: 0}
+  hints:
+  - text: Uka uka
+    onEvent:
+      eventType: 1
+      arguments:
+      - 2
+      maxAmount: 1
+  - text: shiny shiny uka uka
+    onEvent:
+      eventType: 3
+      arguments:
+      - crystal
+      maxAmount: 3
+  - text: Do you also have apples?
+    onEvent:
+      eventType: 3
+      arguments:
+      - peach_juice
+      maxAmount: 1
+  - text: I literally dedicated my whole life to collect these juicy apples .. mhhhh
+    onEvent:
+      eventType: 5
+      arguments:
+      - apple_juice
+      maxAmount: 1
+  preferences:
+  - ingredient: {fileID: 11400000, guid: 1fbcfc6d2be859142a7af46beca66c71, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: cd2c06958a5e06842bb2a138b1611cf4, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: 8b777e29f5a0e5046afe8069b40a8bdc, type: 2}
+    points: 10

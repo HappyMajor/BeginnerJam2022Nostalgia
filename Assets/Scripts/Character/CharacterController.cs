@@ -10,22 +10,24 @@ public class CharacterController : MonoBehaviour
     private DialogController dialogController;
     private Animator animator;
 
+    public AudioSource audioSource;
+    public AudioClip win;
+    public AudioClip lose;
+
     private void Start()
     {
         dialogController = GameObject.Find("DialogController").GetComponent<DialogController>();
-        DisplayHints();
-        animator = GetComponent<Animator>();
-        startPath.MoveTransformAlongPath(transform, () => {
-            Debug.Log("MOVED SUCCESSFULLY!");
-        });
+        EnterBar();
     }
 
-    private void DisplayHints()
+    public void EnterBar()
     {
-        foreach(CharacterDataSO.Hint hint in characterData.hints)
-        {
-            StartCoroutine(DoLater(hint.afterTime, () => dialogController.ShowMessageDelayed(hint.text)));
-        }
+        dialogController.Reset(characterData);
+        GetComponent<SpriteRenderer>().sprite = characterData.idle;
+        StopAllCoroutines();
+        animator = GetComponent<Animator>();
+        startPath.MoveTransformAlongPath(transform, () => {
+        });
     }
 
     private IEnumerator DoLater(float seconds, Action action)
@@ -61,8 +63,12 @@ public class CharacterController : MonoBehaviour
 
     public void Smile()
     {
-        animator.SetBool("smile", true);
+        if(characterData.win != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = characterData.win;
+        }
     }
+
 
     public void StandardFace()
     {
@@ -72,6 +78,7 @@ public class CharacterController : MonoBehaviour
     public void Cry()
     {
         animator.SetBool("cry",true);
+        dialogController.ShowMessageDelayed("Ewww!!!!! Worst drink ever!!!");
     }
 
 }

@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c760774d9f1e4f4d9471eba9241aedd, type: 3}
+  m_Name: SubZero
+  m_EditorClassIdentifier: 
+  characterName: Subzero
+  idle: {fileID: 21300000, guid: e4af2b172e320a34cb86a586e3344035, type: 3}
+  win: {fileID: 0}
+  hints:
+  - text: I now know the villain you truly are.
+    onEvent:
+      eventType: 1
+      arguments:
+      - 2
+      maxAmount: 1
+  - text: I crave a frosting drink...
+    onEvent:
+      eventType: 1
+      arguments:
+      - 10
+      maxAmount: 1
+  - text: I seek a worthy kombatant.
+    onEvent:
+      eventType: 1
+      arguments:
+      - 20
+      maxAmount: 1
+  - text: 'And now something strong would be nice! A drink as strong as me. '
+    onEvent:
+      eventType: 5
+      arguments:
+      - ice
+      maxAmount: 1
+  - text: I like strong and cool drinks.
+    onEvent:
+      eventType: 3
+      arguments:
+      - vodka
+      maxAmount: 1
+  - text: 'Mortal Kombat.. best game ... because Im in there ha ha '
+    onEvent:
+      eventType: 3
+      arguments:
+      - dragon_item
+      maxAmount: 1
+  - text: You want to poison me or something????
+    onEvent:
+      eventType: 3
+      arguments:
+      - mashroom
+      maxAmount: 1
+  preferences:
+  - ingredient: {fileID: 11400000, guid: 5da871952105945f8939c4e20cca144c, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: f23a000acbaed444b91b4837ff89232f, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: ab37573aa60d0465080b38d4040f81a7, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: 3c03c646cc8df42848f1e7b817af15b0, type: 2}
+    points: 10

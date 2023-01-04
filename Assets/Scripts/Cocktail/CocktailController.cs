@@ -8,6 +8,7 @@ public class CocktailController : MonoBehaviour
 {
     int baseFill = 0;
 
+
     public IngredientController baseIngredient;
     public IngredientController middleIngredient;
     public IngredientController topIngredient;
@@ -59,6 +60,25 @@ public class CocktailController : MonoBehaviour
         TweenFactory.Tween("coolFill", baseFill, baseFill + amount,0.25f, TweenScaleFunctions.QuadraticEaseIn, (t) => fillImage.fillAmount = (float) t.CurrentValue/100, null);
 
         baseFill = baseFill + amount;
+    }
+
+    public bool isFull()
+    {
+        if(baseFill >= 100)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    public void ResetDrink()
+    {
+        baseIngredientAmountMap = new Dictionary<IngredientController, int>();
+        fillImage.fillAmount = 0;
+        fillImage.color = Color.white;
+        baseFill = 0;
     }
 
     public void AddMiddle(IngredientController ingredient)

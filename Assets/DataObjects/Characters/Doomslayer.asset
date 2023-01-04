@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c760774d9f1e4f4d9471eba9241aedd, type: 3}
+  m_Name: Doomslayer
+  m_EditorClassIdentifier: 
+  characterName: Doomslayer
+  idle: {fileID: 21300000, guid: 32a975890aa091b4884af823a77b63e4, type: 3}
+  win: {fileID: 21300000, guid: 4a28a308da917cb4191419573de2da83, type: 3}
+  hints:
+  - text: Oh, I fondly remember the moment I was woken up in a facility on the mars..
+      everything changed after that.
+    onEvent:
+      eventType: 1
+      arguments:
+      - 2
+      maxAmount: 1
+  - text: guts, huge guts! Kill them... must kill them all!
+    onEvent:
+      eventType: 1
+      arguments:
+      - 10
+      maxAmount: 1
+  - text: I like the color of this one. resembles the look of blood.. ha ha
+    onEvent:
+      eventType: 3
+      arguments:
+      - red_wine
+      maxAmount: 1
+  - text: I like that.
+    onEvent:
+      eventType: 5
+      arguments:
+      - mars_bar
+      maxAmount: 1
+  - text: I cant even count anymore how many foes I have defeated with this sword.
+      good time ha ha
+    onEvent:
+      eventType: 5
+      arguments:
+      - doom_sword
+      maxAmount: 1
+  - text: Did you just pour ICE in my cocktail?!!? I want my drink pure!!!
+    onEvent:
+      eventType: 5
+      arguments:
+      - ice
+      maxAmount: 1
+  - text: Why the hell would I want milk in my drink?????
+    onEvent:
+      eventType: 3
+      arguments:
+      - milk
+      maxAmount: 1
+  - text: I couldnt care less about a country on earth..
+    onEvent:
+      eventType: 3
+      arguments:
+      - italy_flag
+      maxAmount: 1
+  - text: I heard of these magic mushrooms. Unfortunately they do not grow on the
+      mars...
+    onEvent:
+      eventType: 3
+      arguments:
+      - mashroom
+      maxAmount: 1
+  preferences:
+  - ingredient: {fileID: 11400000, guid: a1a3fc80b9e8a49f1b444d84d68beaec, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: ab37573aa60d0465080b38d4040f81a7, type: 2}
+    points: 10
+  - ingredient: {fileID: 11400000, guid: ea368d298dc484796be6d7482d9a4e4a, type: 2}
+    points: 10
